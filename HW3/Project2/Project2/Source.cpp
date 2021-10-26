@@ -1,7 +1,11 @@
 ﻿/***************************
 4108056007 鄧雅文 第三次作業10/27
 ***************************/
-#include <GL/glut.h>
+
+#include <GL/glew.h>
+#include <GL/freeglut.h>
+#include <Windows.h>
+#include <iostream>
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -13,6 +17,7 @@
 
 int display_type = DRAW_ARRAY; //default使用glDrawArrays來呈現
 GLuint indices[50] = {};	//for glDrawElements的functions
+
 
 void fill_in_indices(int start_index, int number) { //將連續的index填入indices array (for glDrawElements)
 	for (int i = 0; i < number; i++) {
@@ -26,22 +31,6 @@ void fill_in_multi_indices(GLuint* temp_indices, int start_index, int number) { 
 	for (int i = 0; i < number; i++) {
 		temp_indices[i] = start_index;
 		start_index++;
-	}
-}
-
-void glMultiDrawArrays(GLenum mode, const GLint* first, const GLint* count, GLsizei primcount) { 
-	//沒有找到可以include的library，所以直接照定義自己設function
-	GLsizei i;
-	for (i = 0; i < primcount; i++) {
-		glDrawArrays(mode, first[i], count[i]);
-	}
-}
-
-void glMultiDrawElements(GLenum mode, const GLsizei* count, GLenum type, GLvoid** indices_local, GLsizei primcount) { 
-	//沒有找到可以include的library，所以直接照定義自己設function
-	GLsizei i;
-	for (i = 0; i < primcount; i++) {
-		glDrawElements(mode, count[i], type, indices_local[i]);
 	}
 }
 
@@ -2863,7 +2852,7 @@ void glMultiDrawArrays_國(void) {
 		172,
 		176,
 		180,
-		184,
+		184
 
 	};
 	GLint count[] = {
@@ -4431,8 +4420,13 @@ int main(int argc, char* argv[]) {
 	glutInitWindowPosition(0, 0);
 	glutInitWindowSize(1200, 650);
 	glutCreateWindow("國立中興大學");
+
+	glewExperimental = GL_TRUE;
+	if (glewInit()) {
+		exit(EXIT_FAILURE);
+	}
+
 	init();
-	
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutMouseFunc(mouse);
