@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctime>
+#define step_size 0.1
 
 char move_dir = 'q';
 float view_x = 0.0, view_z = 0.0;
@@ -2063,6 +2064,7 @@ void glDrawArrays_學(void) {
 }
 
 void glDrawArrays_logo(void) {
+
 	glRotatef(logo_angle, 1.0, 0.0, 0.0);
 	logo_angle = (logo_angle + 10) % 360;
 	if (logo_angle < 60) {
@@ -2083,7 +2085,7 @@ void glDrawArrays_logo(void) {
 	else glColor3f(0.50196f, 0.0f, 1.0f);
 
 	setupInterleave_logo();
-
+	
 	glDrawArrays(GL_POLYGON, 0, 3);
 	glDrawArrays(GL_POLYGON, 3, 4);
 	glDrawArrays(GL_POLYGON, 7, 4);
@@ -2110,7 +2112,7 @@ void glDrawArrays_logo(void) {
 	glDrawArrays(GL_POLYGON, 101, 4);
 	glDrawArrays(GL_POLYGON, 105, 3);
 	glDrawArrays(GL_POLYGON, 108, 4);
-	
+
 	glColor3f(1.0f, 0.0f, 0.0f);
 		glDrawArrays(GL_POLYGON, 112, 20);
 		glDrawArrays(GL_POLYGON, 132, 6);
@@ -2281,7 +2283,7 @@ void draw_hand(void) {
 }
 
 void auto_rotate(void) {
-	Sleep(50);		
+	Sleep(60);		
 	year = (year + 5) % 360;
 	day = (day + 10) % 360;
 	glutPostRedisplay();
@@ -2289,22 +2291,26 @@ void auto_rotate(void) {
 
 void display(void)	
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	double equation_x[4] = { 0.0, 0.0, 1.0, 0.0 }; //clip plane的傳入參數
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//glClear(GL_COLOR_BUFFER_BIT);
+	
+	
 	glPushMatrix();		//draw nchu background
-		glColor3f(0.29803f, 0.53725f, 0.63922f);
-		
+		glColor3f(0.29803f, 0.53725f, 0.63922f);		
 		switch (move_dir) {
 		case 'w':
-			view_z += 0.3;
+			view_z += step_size;
 			break;
 		case 'a':
-			view_x += 0.3;
+			view_x += step_size;
 			break;
 		case 's':
-			view_z -= 0.3;
+			view_z -= step_size;
 			break;
 		case 'd':
-			view_x -= 0.3;
+			view_x -= step_size;
 			break;
 		}
 		move_dir = 'q';
@@ -2320,25 +2326,37 @@ void display(void)
 		glDrawArrays_National();
 		glDrawArrays_Chung();
 		glDrawArrays_Hsing();
-		glDrawArrays_University();
+		glDrawArrays_University();;
 		glDrawArrays_logo();
+		
 	glPopMatrix();
 
 	
 	glPushMatrix();
 		glColor3f(0.0, 0.0, 0.0);	
 		glLoadIdentity();
-		gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+
+		glTranslatef(0.0, 0.0, -0.25);
+		glScalef(0.05, 0.05, 0.05);
+	
 		draw_hand();	//draw hand
 
 		glPushMatrix();
-			glTranslatef(1.5, -0.5, -1.5);
+			glTranslatef(1.5, -0.5, -1.0);
 			glutWireSphere(0.5, 20, 16);   //draw sun 
 			glRotatef((GLfloat)year, 0.0, 1.0, 0.0);
-			glTranslatef(2.0, 0.0, 0.0);
+			glTranslatef(1.0, 0.0, 0.0);
 			glRotatef((GLfloat)day, 0.0, 1.0, 0.0);
 			glutWireSphere(0.2, 10, 8);    // draw smaller planet
 		glPopMatrix();
+	glPopMatrix();
+
+	glPushMatrix();
+		char exit[] = "Press ESC to exit.";
+		glRasterPos2f(-6.5, -3.5); //字體位置	
+		for (int i = 0; i < (int)strlen(exit); i++){ //loop to display character by character
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, exit[i]);
+		}
 	glPopMatrix();
 
 	glutSwapBuffers();
@@ -2349,10 +2367,10 @@ void reshape(int width, int height)
 	glViewport(0, 0, width, height); 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();	
-	gluPerspective(60.0, (GLfloat)width / (GLfloat)height, 3.0, 20.0);
+	gluPerspective(60.0, (GLfloat)width / (GLfloat)height, 0.1, 50.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	gluLookAt(0.0, 0.0, 7.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 }
 
 void keyboard(unsigned char key, int x, int y)
@@ -2394,12 +2412,13 @@ void keyboard(unsigned char key, int x, int y)
 void init(void)
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+	glEnable(GL_DEPTH_TEST);
 	glShadeModel(GL_SMOOTH);
 }
 
 int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowPosition(0, 0);
 	glutInitWindowSize(1200, 650);
 	glutCreateWindow("國立中興大學");
@@ -2410,6 +2429,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	init();
+	glutFullScreen();
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutKeyboardFunc(keyboard);
