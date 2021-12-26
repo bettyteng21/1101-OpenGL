@@ -30,7 +30,7 @@ bool is_hit = false, fire=false, swing=false, recover=false, jump=false, is_down
 bool hit_m1 = false, hit_m2 = false, hit_m3 = false, curr_logo = true, curr_m1 = true, curr_m2 = true, curr_m3 = true;
 //hit_mx: model 1, 2, 3 是否被射中
 //curr_x: 表示目前該model是消失or正在場上 (預設是都在場)
-bool fog = false, snipe=false, hit_me=false, enemy_fire=false;
+bool fog = false, snipe=false, hit_me=false, enemy_fire=false, anti_aliasing=false, polygon_offset=false;
 //fog: 目前有霧, snipe: 畫瞄準鏡, hit_me: 敵人是否打到我, enemy_fire: 敵人正在fire
 
 Model model1, model2, model3;
@@ -2093,62 +2093,71 @@ void glDrawArrays_學(void) {
 }
 
 void glDrawArrays_logo(void) {
-	glRotatef(logo_angle, 1.0, 0.0, 0.0);
+	glPushMatrix();
+		glTranslatef(2.15, 0.36, 0.0);
+		glRotatef(logo_angle, 0.0, 0.0, 1.0);
+		glTranslatef(-2.15, -0.36, 0.0);
 
-	logo_angle = (logo_angle + 10) % 360;
-	if (logo_angle < 60) {
-		glColor4f(1.0f, 0.50196f, 0.0f, 1.0f);
-	}
-	else if (logo_angle >= 60 && logo_angle < 120) {
-		glColor4f(1.0f, 1.0f, 0.0f, 1.0);
-	}
-	else if (logo_angle >= 120 && logo_angle < 180) {
-		glColor4f(0.50196f, 1.0f, 0.0f, 1.0);
-	}
-	else if (logo_angle >= 180 && logo_angle < 240) {
-		glColor4f(0.0f, 0.50196f, 1.0f, 1.0);
-	}
-	else if (logo_angle >= 240 && logo_angle < 300) {
-		glColor4f(0.25098f, 0.0f, 1.0f, 1.0);
-	}
-	else glColor4f(0.50196f, 0.0f, 1.0f, 1.0);
+		setupInterleave_logo();
+		glColor4f(1.0f, 0.0f, 0.0f, 1.0);
+			glDrawArrays(GL_POLYGON, 112, 20);
+			glDrawArrays(GL_POLYGON, 132, 6);
+			glDrawArrays(GL_POLYGON, 138, 4);
+			glDrawArrays(GL_POLYGON, 142, 4);
+			glDrawArrays(GL_POLYGON, 146, 6);
+		glColor4f(0.29803f, 0.53725f, 0.63922f, 1.0);
 
-	setupInterleave_logo();
+		logo_angle = (logo_angle + 10) % 360;
+		if (logo_angle < 60) {
+			glColor4f(1.0f, 0.50196f, 0.0f, 1.0f);
+		}
+		else if (logo_angle >= 60 && logo_angle < 120) {
+			glColor4f(1.0f, 1.0f, 0.0f, 1.0);
+		}
+		else if (logo_angle >= 120 && logo_angle < 180) {
+			glColor4f(0.50196f, 1.0f, 0.0f, 1.0);
+		}
+		else if (logo_angle >= 180 && logo_angle < 240) {
+			glColor4f(0.0f, 0.50196f, 1.0f, 1.0);
+		}
+		else if (logo_angle >= 240 && logo_angle < 300) {
+			glColor4f(0.25098f, 0.0f, 1.0f, 1.0);
+		}
+		else glColor4f(0.50196f, 0.0f, 1.0f, 1.0);
 	
-	glDrawArrays(GL_POLYGON, 0, 3);
-	glDrawArrays(GL_POLYGON, 3, 4);
-	glDrawArrays(GL_POLYGON, 7, 4);
-	glDrawArrays(GL_POLYGON, 11, 4);
-	glDrawArrays(GL_POLYGON, 15, 4);
-	glDrawArrays(GL_POLYGON, 19, 4);
-	glDrawArrays(GL_POLYGON, 23, 4);
-	glDrawArrays(GL_POLYGON, 27, 14);
-	glDrawArrays(GL_POLYGON, 41, 4);
-	glDrawArrays(GL_POLYGON, 45, 4);
-	glDrawArrays(GL_POLYGON, 49, 4);
-	glDrawArrays(GL_POLYGON, 53, 4);
-	glDrawArrays(GL_POLYGON, 57, 4);
-	glDrawArrays(GL_POLYGON, 61, 4);
-	glDrawArrays(GL_POLYGON, 65, 4);
-	glDrawArrays(GL_POLYGON, 69, 4);
-	glDrawArrays(GL_POLYGON, 73, 4);
-	glDrawArrays(GL_POLYGON, 77, 4);
-	glDrawArrays(GL_POLYGON, 81, 4);
-	glDrawArrays(GL_POLYGON, 85, 4);
-	glDrawArrays(GL_POLYGON, 89, 4);
-	glDrawArrays(GL_POLYGON, 93, 4);
-	glDrawArrays(GL_POLYGON, 97, 4);
-	glDrawArrays(GL_POLYGON, 101, 4);
-	glDrawArrays(GL_POLYGON, 105, 3);
-	glDrawArrays(GL_POLYGON, 108, 4);
-
-	glColor4f(1.0f, 0.0f, 0.0f, 1.0);
-		glDrawArrays(GL_POLYGON, 112, 20);
-		glDrawArrays(GL_POLYGON, 132, 6);
-		glDrawArrays(GL_POLYGON, 138, 4);
-		glDrawArrays(GL_POLYGON, 142, 4);
-		glDrawArrays(GL_POLYGON, 146, 6);
-	glColor4f(0.29803f, 0.53725f, 0.63922f, 1.0);
+		if (polygon_offset == true) { 
+			glEnable(GL_POLYGON_OFFSET_FILL);
+			glPolygonOffset(-1.0, -1.0);
+		}
+			glDrawArrays(GL_POLYGON, 0, 3);
+			glDrawArrays(GL_POLYGON, 3, 4);
+			glDrawArrays(GL_POLYGON, 7, 4);
+			glDrawArrays(GL_POLYGON, 11, 4);
+			glDrawArrays(GL_POLYGON, 15, 4);
+			glDrawArrays(GL_POLYGON, 19, 4);
+			glDrawArrays(GL_POLYGON, 23, 4);
+			glDrawArrays(GL_POLYGON, 27, 14);
+			glDrawArrays(GL_POLYGON, 41, 4);
+			glDrawArrays(GL_POLYGON, 45, 4);
+			glDrawArrays(GL_POLYGON, 49, 4);
+			glDrawArrays(GL_POLYGON, 53, 4);
+			glDrawArrays(GL_POLYGON, 57, 4);
+			glDrawArrays(GL_POLYGON, 61, 4);
+			glDrawArrays(GL_POLYGON, 65, 4);
+			glDrawArrays(GL_POLYGON, 69, 4);
+			glDrawArrays(GL_POLYGON, 73, 4);
+			glDrawArrays(GL_POLYGON, 77, 4);
+			glDrawArrays(GL_POLYGON, 81, 4);
+			glDrawArrays(GL_POLYGON, 85, 4);
+			glDrawArrays(GL_POLYGON, 89, 4);
+			glDrawArrays(GL_POLYGON, 93, 4);
+			glDrawArrays(GL_POLYGON, 97, 4);
+			glDrawArrays(GL_POLYGON, 101, 4);
+			glDrawArrays(GL_POLYGON, 105, 3);
+			glDrawArrays(GL_POLYGON, 108, 4);
+		if (polygon_offset == true) glDisable(GL_POLYGON_OFFSET_FILL);
+		
+	glPopMatrix();
 }
 
 void glDrawArrays_National(void) {
@@ -2526,7 +2535,7 @@ void draw_solar_system_left(void) {
 
 void draw_obj_model3(void) { //green model
 	glPushMatrix();
-		char name3[50] = "human.obj.txt";
+		char name3[50] = "human.obj";
 		model3 = loadModel(name3);
 
 		if (snipe == true && view_z <= 3.0) {
@@ -2555,7 +2564,7 @@ void draw_obj_model3(void) { //green model
 
 void draw_obj_model2(void) { //pink model
 	glPushMatrix();
-		char name2[50] = "human.obj.txt";
+		char name2[50] = "human.obj";
 		model2 = loadModel(name2);
 
 		if (snipe == true && view_z <= 3.0) {
@@ -2584,7 +2593,7 @@ void draw_obj_model2(void) { //pink model
 
 void draw_obj_model1(void) { //blue model
 	glPushMatrix();
-		char name1[50] = "human.obj.txt";
+		char name1[50] = "human.obj";
 		model1 = loadModel(name1);
 
 		if (snipe == true && view_z <= 3.0) {
@@ -2821,6 +2830,13 @@ void display(void)
 	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 
 	glPushMatrix();	
+		if (anti_aliasing == true) { //anti-aliasing
+			glEnable(GL_MULTISAMPLE);
+		}
+		else{
+			glDisable(GL_MULTISAMPLE);
+		}
+
 		draw_fog(); //畫霧
 		draw_ground(); //畫地板
 		
@@ -3069,6 +3085,8 @@ void keyboard(unsigned char key, int x, int y)
 		case 'c':
 		case 'C':
 			move_dir = 'c';
+			if (anti_aliasing == false) anti_aliasing = true;
+			else anti_aliasing = false;
 			glutPostRedisplay();
 			break;
 
@@ -3085,6 +3103,14 @@ void keyboard(unsigned char key, int x, int y)
 			move_dir = 'b'; 
 			if (snipe == false) snipe = true;
 			else snipe = false;
+			glutPostRedisplay();
+			break;
+
+		case 'p':
+		case 'P':
+			move_dir = 'p';
+			if (polygon_offset == false) polygon_offset = true;
+			else polygon_offset = false;
 			glutPostRedisplay();
 			break;
 
@@ -3151,8 +3177,7 @@ void init(void)
 
 int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH | GLUT_MULTISAMPLE);
 	glutInitWindowPosition(0, 0);
 	glutInitWindowSize(1200, 650);
 	glutCreateWindow("國立中興大學");
