@@ -2981,6 +2981,8 @@ void display(void)
 
 	//draw 提示字串
 	glPushMatrix();
+		glEnable(GL_COLOR_MATERIAL); //讓我可以直接使用glColor3f()指定的顏色，而不用再去一個個宣告material
+		glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 		char *temp1= (char*)malloc(5 * sizeof(char));
 		char *temp2 = (char*)malloc(5 * sizeof(char));
 		char *temp3 = (char*)malloc(5 * sizeof(char));
@@ -2988,6 +2990,7 @@ void display(void)
 		char note[100]="";
 		
 		if (temp1 && temp2 && temp3) {
+			glColor3f(1.0, 1.0, 1.0);
 			strcpy(note, " Blue Model HP: ");
 			snprintf(temp1, 5, "%d", hp1);
 			strcat(note, temp1);
@@ -3021,12 +3024,17 @@ void display(void)
 				glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, note[i]);
 			}
 
-			/*strcpy(note, "\n\nPress ESC to Exit");
-			glRasterPos2f(-6.5, 2.0); //字體位置	
-			for (int i = 0; i < (int)strlen(note); i++) { //loop to display character by character
-				glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, note[i]);
-			}*/
+			if (view_z > 3.0) {
+				glColor3f(1.0, 0.0, 0.0);
+				strcpy(note, "\n\nToo close to use snipe!!");
+				glRasterPos2f(-1.5, 3.5); //字體位置	
+				for (int i = 0; i < (int)strlen(note); i++) { //loop to display character by character
+					glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, note[i]);
+				}
+			}
+			
 		}
+		glDisable(GL_COLOR_MATERIAL); //disable 使用glColor3f()畫顏色
 	glPopMatrix();
 
 	glutSwapBuffers();
