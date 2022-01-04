@@ -1,4 +1,5 @@
-﻿//////////////////display_die_menu 沒成
+﻿//texture使用的index: 
+//人物0~14號，小女孩15號~30號，主選單49號，死亡選單48號
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <Windows.h>
@@ -9,34 +10,30 @@
 #include <ctime>
 
 //******************************************
-//#include <Windows.h>
-//#include <GL\glew.h>
-//#include <GL\freeglut.h>
-//#include <iostream>
-
-//#include <stdlib.h>
 #include <string.h>
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-//#include <stdio.h>
-//#include <math.h>
+#include "string"
+#include <irrKlang.h>
 
 using namespace std;
 #define WIDTH 1600.0f
 #define HEIGHT 1024.0f 
-
+#define REDISPLAYTIMERID 1
 //********************************************
 
+// sound
+irrklang::ISoundEngine* engine = irrklang::createIrrKlangDevice();
 
-
-bool start_menu = true, die_menu=false; int button_select = 0;////////////////////////////////////////////////////////////////////////////////////
+bool start_menu = true, die_menu = false; int button_select = 0;
 //start_menu: 正在顯示選單而非遊戲畫面
 bool walk = false, swing_down = false, first_part = true, die = false;
 //swing_down: 擺動時是否在下墜, first_part: 擺動時前半部分, die: 死掉動畫
 int swing = 0, die_angle = 0, face_angle = 180, girl_face_angle = 180;
 //swing: 走路時，手腳擺動的角度, die_angle: 死掉時，人物倒下的角度
-
+int pass = 0;
+int time_count = 100;
 GLuint texture[50];
 
 /* 貼圖時使用的一些matrix */
@@ -255,7 +252,7 @@ void loadTexture(char* file_name, Image* image, int tex_index) {
 
 /* 畫選單背景 *//////////////////////////////////////////////////////////////////////////////////////////////
 static void drawMenuBackground() {
-    glBindTexture(GL_TEXTURE_2D, texture[49]); 
+    glBindTexture(GL_TEXTURE_2D, texture[49]);
     glPushMatrix();
         glTranslatef(-380, -220, 0.0);
         glScalef(4, 4, 4);
@@ -269,19 +266,16 @@ static void drawMenuBackground() {
     glPopMatrix();
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-static void drawDeadBackground() { 
+/* 畫死掉後的選單logo *//////////////////////////////////////////////////////////////////////////////////////////////////////
+static void drawDeadBackground() {
     glBindTexture(GL_TEXTURE_2D, texture[48]);
     glPushMatrix();
-        //glTranslatef(-380, -220, 0.0);
-        //
-    
-            glBegin(GL_QUADS);
+        glBegin(GL_QUADS);
             glTexCoord2d(0.0, 0.0); glVertex3f(0.0, 0.0, 0.0);
             glTexCoord2d(0.0, 1.0); glVertex3f(0.0, 108.0, 0.0);
             glTexCoord2d(1.0, 1.0); glVertex3f(192.0, 108.0, 0.0);
             glTexCoord2d(1.0, 0.0); glVertex3f(192.0, 0.0, 0.0);
-            glEnd();
+        glEnd();
         glScalef(0.25, 0.25, 0.25);
     glPopMatrix();
 }
@@ -338,6 +332,9 @@ static void drawHead_girl(GLfloat size, GLenum type)
         case 0:
             glBindTexture(GL_TEXTURE_2D, texture[18]); //right face (model的視角)
             break;
+        case 5:
+            glBindTexture(GL_TEXTURE_2D, texture[16]); //right face (model的視角)
+            break;
         case 2:
             glBindTexture(GL_TEXTURE_2D, texture[17]); //left face
             break;
@@ -345,7 +342,7 @@ static void drawHead_girl(GLfloat size, GLenum type)
             glBindTexture(GL_TEXTURE_2D, texture[15]); //front face
             break;
         default:
-            glBindTexture(GL_TEXTURE_2D, texture[16]); //hair
+            glBindTexture(GL_TEXTURE_2D, texture[19]); //bottom hair
             break;
         }
         glBegin(type);
@@ -402,10 +399,13 @@ static void drawBody_girl(GLfloat size, GLenum type)
     for (i = 5; i >= 0; i--) {
         switch (i) {
         case 4:
-            glBindTexture(GL_TEXTURE_2D, texture[19]); //front body
+            glBindTexture(GL_TEXTURE_2D, texture[20]); //front body
+            break;
+        case 3:
+            glBindTexture(GL_TEXTURE_2D, texture[30]); //腳底
             break;
         default:
-            glBindTexture(GL_TEXTURE_2D, texture[20]); //back body
+            glBindTexture(GL_TEXTURE_2D, texture[21]); //back body
             break;
         }
         glBegin(type);
@@ -451,11 +451,11 @@ static void drawArm(GLfloat size, GLenum type)
             break;
         }
         glBegin(type);
-        glNormal3fv(&n[i][0]);
-        glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[i][0]][0]);
-        glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[i][1]][0]);
-        glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[i][2]][0]);
-        glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[i][3]][0]);
+            glNormal3fv(&n[i][0]);
+            glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[i][0]][0]);
+            glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[i][1]][0]);
+            glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[i][2]][0]);
+            glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[i][3]][0]);
         glEnd();
     }
 }
@@ -469,47 +469,34 @@ static void drawArm_girl(GLfloat size, GLenum type)
     v[2][1] = v[3][1] = v[6][1] = v[7][1] = size / 2; //upper height
     v[0][2] = v[3][2] = v[4][2] = v[7][2] = -size / 4; //back thickness
     v[1][2] = v[2][2] = v[5][2] = v[6][2] = size / 4; //front thickness
-    glBindTexture(GL_TEXTURE_2D, texture[21]); //back arm
-    glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[5][0]][0]);
-    glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[5][1]][0]);
-    glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[5][2]][0]);
-    glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[5][3]][0]);
-    for (i = 4; i >= 1; i--) {
+ 
+    for (i = 5; i >= 0; i--) {
         switch (i) {
         case 0:
-            glBindTexture(GL_TEXTURE_2D, texture[21]); //side arm
-            break;
-        case 1:
-            glBindTexture(GL_TEXTURE_2D, texture[21]); //shoulder
+            glBindTexture(GL_TEXTURE_2D, texture[23]); //side arm
             break;
         case 3:
-            glBindTexture(GL_TEXTURE_2D, texture[12]); //手掌
+            glBindTexture(GL_TEXTURE_2D, texture[25]); //手掌
             break;
         case 4:
             glBindTexture(GL_TEXTURE_2D, texture[22]); //front arm
             break;
+        case 5:
+            glBindTexture(GL_TEXTURE_2D, texture[24]); //back arm
+            break;
 
         default:
-            glBindTexture(GL_TEXTURE_2D, texture[21]); //others
+            glBindTexture(GL_TEXTURE_2D, texture[23]); //others
             break;
         }
         glBegin(type);
-        glNormal3fv(&n[i][0]);
-        glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[i][0]][0]);
-        glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[i][1]][0]);
-        glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[i][2]][0]);
-        glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[i][3]][0]);
+            glNormal3fv(&n[i][0]);
+            glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[i][0]][0]);
+            glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[i][1]][0]);
+            glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[i][2]][0]);
+            glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[i][3]][0]);
         glEnd();
     }
-
-    glBindTexture(GL_TEXTURE_2D, texture[21]); //back arm
-    glBegin(type);
-    glNormal3fv(&n[i][0]);
-    glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[0][0]][0]);
-    glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[0][1]][0]);
-    glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[0][2]][0]);
-    glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[0][3]][0]);
-    glEnd();
 }
 
 /* 畫腿 */
@@ -543,11 +530,11 @@ static void drawLeg(GLfloat size, GLenum type)
             break;
         }
         glBegin(type);
-        glNormal3fv(&n[i][0]);
-        glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[i][0]][0]);
-        glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[i][1]][0]);
-        glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[i][2]][0]);
-        glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[i][3]][0]);
+            glNormal3fv(&n[i][0]);
+            glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[i][0]][0]);
+            glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[i][1]][0]);
+            glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[i][2]][0]);
+            glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[i][3]][0]);
         glEnd();
     }
 }
@@ -561,46 +548,39 @@ static void drawLeg_girl(GLfloat size, GLenum type)
     v[2][1] = v[3][1] = v[6][1] = v[7][1] = size / 2; //upper height
     v[0][2] = v[3][2] = v[4][2] = v[7][2] = -size / 4; //back thickness
     v[1][2] = v[2][2] = v[5][2] = v[6][2] = size / 4; //front thickness
-    glBindTexture(GL_TEXTURE_2D, texture[21]); //back arm
-    glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[5][0]][0]);
-    glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[5][1]][0]);
-    glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[5][2]][0]);
-    glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[5][3]][0]);
-    for (i = 4; i >= 0; i--) {
+    
+    for (i = 5; i >= 0; i--) {
         switch (i) {
-        case 0:
-            glBindTexture(GL_TEXTURE_2D, texture[23]); //side arm
-            break;
-        case 1:
-            glBindTexture(GL_TEXTURE_2D, texture[23]); //shoulder
-            break;
-        case 3:
-            //glBindTexture(GL_TEXTURE_2D, texture[14]); //手掌
+        case 2:
+            glBindTexture(GL_TEXTURE_2D, texture[28]); //side arm
             break;
         case 4:
-            glBindTexture(GL_TEXTURE_2D, texture[23]); //front arm
+            glBindTexture(GL_TEXTURE_2D, texture[26]); //front leg
+            break;
+        case 5:
+            glBindTexture(GL_TEXTURE_2D, texture[27]); //back leg
             break;
 
         default:
-            glBindTexture(GL_TEXTURE_2D, texture[23]); //others
+            glBindTexture(GL_TEXTURE_2D, texture[29]); //others
             break;
         }
+
         glBegin(type);
-        glNormal3fv(&n[i][0]);
-        glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[i][0]][0]);
-        glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[i][1]][0]);
-        glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[i][2]][0]);
-        glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[i][3]][0]);
+            glNormal3fv(&n[i][0]);
+            glTexCoord2d(0.0, 0.0); glVertex3fv(&v[faces[i][0]][0]);
+            glTexCoord2d(0.0, 1.0); glVertex3fv(&v[faces[i][1]][0]);
+            glTexCoord2d(1.0, 1.0); glVertex3fv(&v[faces[i][2]][0]);
+            glTexCoord2d(1.0, 0.0); glVertex3fv(&v[faces[i][3]][0]);
         glEnd();
     }
 }
 
-/* 指定bmp，載入選單texture *////////////////////////////////////////////////////////////////////////////////////
+/* 指定bmp，載入選單texture */
 void setMenuBackground(void) {
     char* file_name = (char*)malloc(100 * sizeof(char));
     Image* image1 = (Image*)malloc(sizeof(Image));
     Image* image2 = (Image*)malloc(sizeof(Image));
-    
 
     strcpy(file_name, "menu_background.bmp");
     loadTexture(file_name, image1, 49); //textureNo 49
@@ -635,19 +615,22 @@ void setHead_girl(void) {
     Image* image2 = (Image*)malloc(sizeof(Image));
     Image* image3 = (Image*)malloc(sizeof(Image));
     Image* image4 = (Image*)malloc(sizeof(Image));
+    Image* image5 = (Image*)malloc(sizeof(Image));
 
-    strcpy(file_name, "girl_face_new.bmp");
-    cout << "girl1" << endl;
-    loadTexture(file_name, image1, 15); //textureNo 0
-    cout << "girl2" << endl;
-    strcpy(file_name, "girl_hair_new.bmp");
-    loadTexture(file_name, image2, 16); //textureNo 1
+    strcpy(file_name, "g_face_new.bmp");
+    loadTexture(file_name, image1, 15); 
+  
+    strcpy(file_name, "g_back_hair_new.bmp");
+    loadTexture(file_name, image2, 16);
 
-    strcpy(file_name, "girl_side_face_new.bmp");
-    loadTexture(file_name, image3, 17); //textureNo 2
+    strcpy(file_name, "g_side_hair_left_new.bmp");
+    loadTexture(file_name, image3, 17); 
 
-    strcpy(file_name, "girl_side_face_new_right.bmp");
+    strcpy(file_name, "g_side_hair_right_new.bmp");
     loadTexture(file_name, image4, 18); //textureNo 3
+
+    strcpy(file_name, "g_bottom_hair_new.bmp");
+    loadTexture(file_name, image5, 19); //textureNo 3
 }
 
 /* 指定bmp，載入身體texture */
@@ -666,12 +649,16 @@ void setBody_girl(void) {
     char* file_name = (char*)malloc(100 * sizeof(char));
     Image* image1 = (Image*)malloc(sizeof(Image));
     Image* image2 = (Image*)malloc(sizeof(Image));
+    Image* image3 = (Image*)malloc(sizeof(Image));
 
-    strcpy(file_name, "girl_front_body.bmp");
-    loadTexture(file_name, image1, 19); //textureNo 4
+    strcpy(file_name, "g_front_body_new.bmp");
+    loadTexture(file_name, image1, 20); 
 
-    strcpy(file_name, "girl_back_body.bmp");
-    loadTexture(file_name, image2, 20); //textureNo 5  
+    strcpy(file_name, "g_back_body_new.bmp");
+    loadTexture(file_name, image2, 21); 
+
+    strcpy(file_name, "g_bottom_body_new.bmp");
+    loadTexture(file_name, image3, 30); 
 }
 
 /* 指定bmp，載入手臂texture */
@@ -707,20 +694,17 @@ void setArm_girl(void) {
     Image* image4 = (Image*)malloc(sizeof(Image));
     Image* image5 = (Image*)malloc(sizeof(Image));
 
-    strcpy(file_name, "girl_front_hand.bmp");
-    loadTexture(file_name, image1, 21); //textureNo 6
+    strcpy(file_name, "g_front_hand_new.bmp"); //front and back hand
+    loadTexture(file_name, image1, 22); 
 
-    //strcpy(file_name, "shoulder_new.bmp");
-    //loadTexture(file_name, image2, 22); //textureNo 7
+    strcpy(file_name, "g_side_hand_new.bmp");
+    loadTexture(file_name, image3, 23); //textureNo 8
 
-    strcpy(file_name, "girl_front_hand.bmp");
-    loadTexture(file_name, image3, 22); //textureNo 8
+    strcpy(file_name, "g_back_hand_new.bmp");
+    loadTexture(file_name, image4, 24); //textureNo 9
 
-    //strcpy(file_name, "girl_side_hand.bmp");
-    //loadTexture(file_name, image4, 24); //textureNo 9
-
-    //strcpy(file_name, "hand_new.bmp");
-    //loadTexture(file_name, image5, 25); //textureNo 10
+    strcpy(file_name, "g_bottom_hand_new.bmp");
+   loadTexture(file_name, image5, 25); //textureNo 10
 }
 
 /* 指定bmp，載入腿texture */
@@ -746,31 +730,33 @@ void setLeg(void) {
 void setLeg_girl(void) {
     char* file_name = (char*)malloc(100 * sizeof(char));
     Image* image1 = (Image*)malloc(sizeof(Image));
-    //Image* image2 = (Image*)malloc(sizeof(Image));
-    //Image* image3 = (Image*)malloc(sizeof(Image));
-    //Image* image4 = (Image*)malloc(sizeof(Image));
+    Image* image2 = (Image*)malloc(sizeof(Image));
+    Image* image3 = (Image*)malloc(sizeof(Image));
+    Image* image4 = (Image*)malloc(sizeof(Image));
 
-    strcpy(file_name, "girl_leg.bmp");
-    loadTexture(file_name, image1, 23); //textureNo 11
-    /*
-    strcpy(file_name, "back_leg_new.bmp");
+    strcpy(file_name, "g_front_leg_new.bmp");
+    loadTexture(file_name, image1, 26); //textureNo 11
+    
+    strcpy(file_name, "g_back_leg_new.bmp");
     loadTexture(file_name, image2, 27); //textureNo 12
-    strcpy(file_name, "side_leg_new.bmp");
+
+    strcpy(file_name, "g_side_leg_new.bmp");
     loadTexture(file_name, image3, 28); //textureNo 13
-    strcpy(file_name, "feet_new.bmp");
-    loadTexture(file_name, image4, 29); //textureNo 14*/
+
+    strcpy(file_name, "g_side_leg2_new.bmp");
+    loadTexture(file_name, image4, 29); //textureNo 14
 }
 
-/* 選單的選擇按鈕 */////////////////////////////////////////////////////////////////////////////////////
+/* 選單的選擇按鈕 */
 void draw_button(void) {
     glColor3f(1.0, 0.0, 0.0);
     glTranslatef(-7.0, 2.0, 1.0);
     glLineWidth(3);
     glBegin(GL_LINE_LOOP);
-        glVertex3f(-300, -80, 0); // XYZ left, top
-        glVertex3f(-60, -80, 0); // XYZ right, top
-        glVertex3f(-60, -110, 0); // XYZ right, bottom
-        glVertex3f(-300, -110, 0); // XYZ left, bottom
+        glVertex3f(-300, -70, 0); // XYZ left, top
+        glVertex3f(-60, -70, 0); // XYZ right, top
+        glVertex3f(-60, -120, 0); // XYZ right, bottom
+        glVertex3f(-300, -120, 0); // XYZ left, bottom
     glEnd();
 }
 
@@ -782,24 +768,23 @@ void myinit(void)
 
     // Create Texture
     glGenTextures(50, texture); //total 50 textures
-    setMenuBackground();
     setHead();
+
     setBody();
     setArm();
     setLeg();
     setHead_girl();
     setBody_girl();
     setArm_girl();
+    setLeg_girl();
+
+    setMenuBackground();
 
     glShadeModel(GL_SMOOTH);
     glEnable(GL_NORMALIZE); //不要讓glScalef()改到我的法向量
 
     /*****************************************************/
     glClearColor(0.0, 0.0, 0.0, 0.0);
-    //glClearColor(0.0, 0.1, 0.1, 0.0);
-    //glShadeModel(GL_SMOOTH);
-    //glEnable(GL_DEPTH_TEST);
-
     //
     GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -841,9 +826,43 @@ void myinit(void)
     //glShadeModel(GL_FLAT);
     /*image*****************************************/
     /****************************************************/
+
+    engine->play2D("audio/breakout.mp3");
+}
+
+void timerFunc(int nTimerID)
+{
+    switch (nTimerID)
+    {
+    case REDISPLAYTIMERID:
+        if (time_count > 0) {
+            time_count--;
+            glutPostRedisplay();
+            glutTimerFunc(1000, timerFunc, REDISPLAYTIMERID);
+        }
+        break;
+    }
+}
+void DrawString(string str)
+{
+    static int isFirstCall = 1;
+    static GLuint lists;
+
+    if (isFirstCall)
+    {//第一次调用时 为每个ASCII字符生成一个显示列表
+        isFirstCall = 0;
+        //申请MAX__CHAR个连续的显示列表编号
+        lists = glGenLists(128);
+        //把每个字符的绘制命令装到对应的显示列表中
+        wglUseFontBitmaps(wglGetCurrentDC(), 0, 128, lists);
+    }
+
+    //调用每个字符对应的显示列表，绘制每个字符
+    for (int i = 0; i < str.length(); i++)
+        glCallList(lists + str.at(i));
 }
 static int kill = 0, kill_time = 0;
-void auto_rotate(void) { /////////////////////////////////////////////////////////////////////////////
+void auto_rotate(void) {
     Sleep(80); //每80ms更新一次此function
     //小女孩轉動
     if (kill_time <= 20) {
@@ -851,7 +870,7 @@ void auto_rotate(void) { ///////////////////////////////////////////////////////
     }
     else {
         girl_face_angle = (girl_face_angle + 30);
-        if (girl_face_angle >= 350 && kill == 0) { kill = 1; kill_time = 0; }
+        if (girl_face_angle >= 359 && kill == 0) { kill = 1; kill_time = 0; }
         else if (girl_face_angle >= 170 && kill == 1) { kill = 0; kill_time = 0; }
         girl_face_angle = (girl_face_angle) % 360;
     }
@@ -877,7 +896,7 @@ void auto_rotate(void) { ///////////////////////////////////////////////////////
     if (die) {
         if (die_angle >= -90) die_angle = die_angle - 15;
         else {
-            die_menu = true; 
+            die_menu = true;
         }
     }
 
@@ -1016,16 +1035,25 @@ void draw_view(int length, int width, int sky_height, int floor_height) {
     glVertex3f(-width, floor_height, length * 2);
 
     glEnd();
+
     glPopMatrix();
     /*****************************************/
     /* sky */
     glDisable(GL_TEXTURE_2D);
     glColor3f((float)208 / 255, (float)222 / 255, (float)223 / 255);
+    //glColor3f(1.0f, 1.0f, 0.3f);
     glBegin(GL_QUADS);
     glVertex3f(-width, sky_height, 0);
     glVertex3f(-width, sky_height, length * 2);
     glVertex3f(width, sky_height, length * 2);
     glVertex3f(width, sky_height, 0);
+    glEnd();
+    glColor3f(1, 1, 1);
+    glBegin(GL_QUADS);
+    glVertex3f(width, floor_height + 0.001, length - 20);
+    glVertex3f(width, floor_height + 0.001, length - 25);
+    glVertex3f(-width, floor_height + 0.001, length - 25);
+    glVertex3f(-width, floor_height + 0.001, length - 20);
     glEnd();
     glEnable(GL_TEXTURE_2D);
     glPopMatrix();
@@ -1035,7 +1063,7 @@ static int length = 100, width = 50, sky_height = 70, floor_height = -2;
 static GLfloat meX = 0.0, meY = 3.0, meZ = length * 2 - 3;
 static GLfloat seeX = 0.0, seeY = 0.0, seeZ = -1.0;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void display_start_menu(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();            //clear the matrix
@@ -1045,37 +1073,30 @@ void display_start_menu(void) {
     glDisable(GL_LIGHTING);
     glDisable(GL_LIGHT0);
 
-    switch (button_select) { 
+    switch (button_select) {
         case 0:
             glPushMatrix(); //start的框框
-                glTranslatef(0.0, 55.0, 0.0);
+                glTranslatef(0.0, 10.0, 0.0);
                 draw_button();
             glPopMatrix();
             break;
         case 1:
-            glPushMatrix(); //cheat ver.的框框
-                draw_button();
-            glPopMatrix();
-            break;
-        case 2:
             glPushMatrix(); //exit的框框
-                glTranslatef(0.0, -55.0, 0.0);
+                glTranslatef(0.0, -65.0, 0.0);
                 draw_button();
             glPopMatrix();
             break;
-    } 
+    }
 
     glPushMatrix();
         glEnable(GL_TEXTURE_2D);
-        drawMenuBackground();
+            drawMenuBackground();
         glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
-    
     glutSwapBuffers();
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void drawFilledCircle(GLfloat x, GLfloat y, GLfloat radius) {
     int i; float PI = 3.1415;
     int triangleAmount = 20; //# of triangles used to draw circle
@@ -1093,7 +1114,7 @@ void drawFilledCircle(GLfloat x, GLfloat y, GLfloat radius) {
     }
     glEnd();
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void display_die_menu(void) {
     if (die_menu == true) {
         glPushMatrix();
@@ -1108,7 +1129,7 @@ void display_die_menu(void) {
 
             glDisable(GL_BLEND);
         glPopMatrix();
-        
+
         glPushMatrix();
             glEnable(GL_TEXTURE_2D);
             glTranslatef(meX, meY, meZ);
@@ -1120,20 +1141,18 @@ void display_die_menu(void) {
 
             glDisable(GL_TEXTURE_2D);
             glEnable(GL_DEPTH_TEST);
-        glPopMatrix();
+         glPopMatrix();
 
-        glPushMatrix();
-            //glEnable(GL_COLOR_MATERIAL); //讓我可以直接使用glColor3f()指定的顏色，而不用再去一個個宣告material
-            //glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+         glPushMatrix(); 
             char* temp1 = (char*)malloc(5 * sizeof(char));
             char note[100] = "";
             if (!temp1) {
                 printf("malloc error!\n"); return;
             }
+            
             glTranslatef(meX, meY, meZ);
             glTranslatef(0.0, 0.9 - meY, -10); //初始位置(可改)
             glTranslatef(0, -1.5, 1);
-
             glColor3f(1.0, 1.0, 1.0);
             strcpy(note, "Press R to recover");
             glRasterPos2f(-3.0, 3.9); //字體位置	
@@ -1146,25 +1165,14 @@ void display_die_menu(void) {
                 glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, note[i]);
             }
         glPopMatrix();
-
-        
     }
 }
 
 void display(void) {
-    /************************主選單畫面**********************/
     if (start_menu) {
-
         display_start_menu();
-        display_die_menu();
     }
-    /************************遊戲畫面**********************/
     else {
-        //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        /**********************************************************/
-        //****************************
-
         GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
         GLfloat mat_ambient[] = { 0.7, 0.7, 0.7, 1.0 };
         GLfloat mat_ambient_color[] = { 0.8, 0.8, 0.2, 1.0 };
@@ -1176,6 +1184,17 @@ void display(void) {
         GLfloat mat_emission[] = { 0.3, 0.2, 0.2, 0.0 };
         //*****************************
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glColor3f(0, 0, 0);//设置绘图颜色
+
+        //計時***************************************
+        glTranslatef(meX, meY - 2, meZ - (length * 2 - 3));
+        glRasterPos3f(width / 2, sky_height / 2, length * 1.5);//设置文字位置
+        string str(std::to_string(time_count));
+        string str1 = "remain time : ";
+        string str2 = " s";
+        str = str1 + str + str2;
+        DrawString(str);
+        //********************************************
         glLoadIdentity();            //clear the matrix
         gluLookAt(meX, meY, meZ, seeX, seeY, seeZ, 0.0, 1.0, 0.0);
 
@@ -1203,15 +1222,14 @@ void display(void) {
         //draw_view
         draw_view(length, width, sky_height, floor_height);
         /***********************************************************/
-        glPushMatrix();    
+        glPushMatrix();
             glEnable(GL_TEXTURE_2D);
-            //line 410~476 是畫完整人物的code，要移動可以整坨一起動
+
             glPushMatrix();
-                glTranslatef(0, 0, 20);
+                glTranslatef(0, 8.5, 20);
                 glRotatef(girl_face_angle, 0.0, 1.0, 0.0);
                 //head
                 glPushMatrix();
-                //glTranslatef(0, 40, 0);
                     glTranslatef(0, 50, 0);
                     drawHead_girl(20.0, GL_QUADS);
                 glPopMatrix();
@@ -1223,6 +1241,7 @@ void display(void) {
                 //arm
                 glPushMatrix();
                     glTranslatef(-12, 30.0, 0.0);
+                    glRotatef(180, 0.0, 1.0, 0.0);
                     drawArm_girl(20.0, GL_QUADS);
                 glPopMatrix();
                 //arm
@@ -1233,13 +1252,12 @@ void display(void) {
                 //left leg
                 glPushMatrix();
                     glTranslatef(-6.0, 4.0, 0.0);
+                    glRotatef(180, 0.0, 1.0, 0.0);
                     drawLeg_girl(20.0, GL_QUADS);
-                    //drawArm_girl(20.0, GL_QUADS);
                 glPopMatrix();
                 glPushMatrix();
                     glTranslatef(6.0, 4.0, 0.0);
                     drawLeg_girl(20.0, GL_QUADS);
-                    //drawArm_girl(20.0, GL_QUADS);
                 glPopMatrix();
             glPopMatrix();
 
@@ -1258,13 +1276,11 @@ void display(void) {
                 glPushMatrix();
                     drawHead(1.0, GL_QUADS);
                 glPopMatrix();
-
                 //body
                 glPushMatrix();
                     glTranslatef(0.0, -1.0, 0.0);
                     drawBody(1.0, GL_QUADS);
                 glPopMatrix();
-       
                 //left arm
                 glPushMatrix();
                     glTranslatef(-0.65, -1.0, 0.0);
@@ -1272,10 +1288,8 @@ void display(void) {
                         if (first_part) glRotatef(-swing, 1.0, 0.0, 0.0); //擺動前半部分 往前擺
                         else glRotatef(swing, 1.0, 0.0, 0.0); //擺動後半部分 往後擺
                     }
-
                     drawArm(1.0, GL_QUADS);
                 glPopMatrix();
-
                 //right arm
                 glPushMatrix();
                     glTranslatef(0.65, -1.0, 0.0);
@@ -1286,7 +1300,6 @@ void display(void) {
                     glRotatef(180, 0.0, 1.0, 0.0);
                     drawArm(1.0, GL_QUADS);
                 glPopMatrix();
-
                 //left leg
                 glPushMatrix();
                     glTranslatef(-0.25, -2.25, 0.0);
@@ -1298,7 +1311,6 @@ void display(void) {
                     }
                     drawLeg(1.0, GL_QUADS);
                 glPopMatrix();
-
                 //right leg
                 glPushMatrix();
                     glTranslatef(0.25, -2.25, 0.0);
@@ -1316,25 +1328,14 @@ void display(void) {
             glDisable(GL_TEXTURE_2D);
         glPopMatrix();
 
-       
+        if(pass) printf("pass=%d\n", pass);
         display_die_menu(); //若死掉，使用死掉畫面
-     
 
         glutSwapBuffers();
     }
-    
 }
 
 void myReshape(int w, int h) {
-    /*
-    glViewport(0, 0, w, h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(60.0, 1.0 * (GLfloat)w / (GLfloat)h, 1.0, 50.0);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    gluLookAt(0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-    */
     glViewport(0, 0, (GLsizei)w, (GLsizei)h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -1342,9 +1343,9 @@ void myReshape(int w, int h) {
     glMatrixMode(GL_MODELVIEW);
 }
 
-
 void move(int m) {
-    if (kill == 1 && die == false) die = true;
+    if (kill==1 && die == false) die = true;
+    if (time_count <= 0) die = true;
     if (die == true) return;
     //cout <<"seeX: " << seeX << endl;
    // cout <<"meX: " << meX << endl;
@@ -1361,6 +1362,7 @@ void move(int m) {
     else if (m == 2) {
         if (meZ < length * 2 - 2) {
             meZ = meZ + 1;
+            if (meZ > (length - 25)) pass = 1;
             //seeX = meX;
             //seeZ = meZ + 0.1;
             seeZ = seeZ + 1;
@@ -1387,7 +1389,8 @@ void move(int m) {
     }
     glutPostRedisplay();
 }
-/* 釋放鍵盤時會call此function *////////////////////////////////////////////////////////////////////////////////////
+
+/* 釋放鍵盤時會call此function */
 void keyboardUp(unsigned char key, int x, int y) {
     glutIgnoreKeyRepeat(1); //ignore key repeat
     switch (key) {
@@ -1395,20 +1398,14 @@ void keyboardUp(unsigned char key, int x, int y) {
     case 'a':
     case 's':
     case 'd':
+        //cout << "B" << endl;
         walk = false; //釋放鍵盤時，停止走路
         break;
-    /*case 27: // “esc” on keyboard
-        start_menu = true; //回到主選單
-        die = false;
-        die_menu = false;
-        break;*/
-    
     default:
         break;
     }
     glutPostRedisplay();
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void keyboard(unsigned char key, int x, int y) {
     glutIgnoreKeyRepeat(0); //do NOT ignore key repeat
     switch (key) {
@@ -1441,7 +1438,7 @@ void keyboard(unsigned char key, int x, int y) {
         }
         break;
     case 13: // “enter” on keyboard
-        if (start_menu && button_select == 2) { //目前在選單 且選到exit 按下enter
+        if (start_menu && button_select == 1) { //目前在選單 且選到exit 按下enter
             exit(0);
         }
 
@@ -1451,7 +1448,7 @@ void keyboard(unsigned char key, int x, int y) {
         break;
     case 27: // “esc” on keyboard
         start_menu = true; //回到主選單
-        die = false; 
+        die = false;
         die_menu = false;
 
         meX = 0.0, meY = 3.0, meZ = length * 2 - 3; //restart game
@@ -1463,14 +1460,13 @@ void keyboard(unsigned char key, int x, int y) {
     glutPostRedisplay();
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void keyboardSpecial(GLint key, GLint x, GLint y) { 
-    if (key == GLUT_KEY_UP){
-        if (button_select == 0) button_select = 2;
+void keyboardSpecial(GLint key, GLint x, GLint y) {
+    if (key == GLUT_KEY_UP) {
+        if (button_select == 0) button_select = 1;
         else button_select--;
     }
     else if (key == GLUT_KEY_DOWN) {
-        if (button_select == 2) button_select = 0;
+        if (button_select == 1) button_select = 0;
         else button_select++;
     }
     glutPostRedisplay();
@@ -1492,6 +1488,7 @@ void mouse(int button, int state, int x, int y)
 
 int main(int argc, char** argv)
 {
+    
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowPosition(0, 0);
@@ -1504,16 +1501,14 @@ int main(int argc, char** argv)
     }
 
     myinit();
-    
     glutDisplayFunc(display);
-    
-    
     glutReshapeFunc(myReshape);
     glutKeyboardFunc(keyboard);
     glutKeyboardUpFunc(keyboardUp);
-    glutSpecialFunc(keyboardSpecial); ////////////////////////////////////////////////////////////////////////////
-    glutMouseFunc(mouse);
+    glutSpecialFunc(keyboardSpecial);
+    //glutMouseFunc(mouse);
     glutIdleFunc(auto_rotate);
+    glutTimerFunc(1000, timerFunc, REDISPLAYTIMERID);
     glutMainLoop();
 
     return 0;
