@@ -1,0 +1,218 @@
+﻿  Source.cpp
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(317,45): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(318,45): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(319,45): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(321,45): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(322,45): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(323,45): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(824,24): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(825,24): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(826,24): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(829,17): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1029,20): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1187,23): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1194,49): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1195,49): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1254,39): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1259,42): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1261,37): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1264,45): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1265,43): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1506,23): warning C4477: 'fprintf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'GLfloat *'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(1891,42): warning C4244: 'initializing': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2242,51): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2271,51): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2304,51): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2345,51): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2386,51): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2427,51): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2473,53): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2474,51): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2475,52): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2476,54): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2496,52): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2497,54): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2498,52): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2504,52): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2505,54): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2506,52): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2512,52): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2513,51): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2514,52): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2515,54): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2727,41): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2769,53): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(2915,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3040,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3040,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3042,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3043,37): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3043,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3043,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3045,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3046,35): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3046,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3046,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3049,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3049,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3058,44): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3058,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3058,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3060,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3061,37): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3061,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3061,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3063,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3064,35): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3064,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3064,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3067,42): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3067,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3067,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3077,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3077,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3079,26): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3080,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3080,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3082,26): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3083,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3083,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3086,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3086,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3095,38): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3095,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3095,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3097,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3098,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3098,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3100,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3101,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3101,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3104,36): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3104,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3104,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3114,38): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3114,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3114,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3116,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3117,45): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3117,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3117,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3119,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3120,43): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3120,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3120,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3123,36): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3123,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3123,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3133,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3133,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3135,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3136,38): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3136,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3136,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3138,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3139,37): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3139,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3139,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3141,26): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3142,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3142,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3151,44): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3151,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3151,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3153,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3154,37): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3154,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3154,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3156,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3157,38): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3157,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3157,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3159,26): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3160,45): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3160,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3160,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3171,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3171,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3172,43): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3172,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3172,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3173,42): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3173,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3173,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3174,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3174,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3179,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3179,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3179,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3180,52): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3180,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3180,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3181,53): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3181,37): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3181,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3182,53): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3182,37): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3182,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3279,42): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3298,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3326,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3336,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3338,34): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3354,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3359,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3383,54): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3384,60): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3385,54): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3390,55): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3411,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3429,41): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3529,46): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3539,46): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3549,46): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3572,19): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3608,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3609,19): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3613,23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3628,38): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3630,39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3631,28): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3637,37): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3639,39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3640,28): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3650,39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3651,28): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3661,39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3662,28): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3811,52): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3816,67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3817,60): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3819,67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3820,60): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3822,67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3824,60): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3827,23): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3830,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3831,58): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3833,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3834,58): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3836,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3837,58): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3889,23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3891,67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3892,60): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3894,67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3895,60): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3897,67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3899,60): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3902,23): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3905,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3906,58): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3908,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3909,58): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3911,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3912,58): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3956,48): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Project2\Source.cpp(3983,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Project2.vcxproj -> C:\Users\鄧雅文\Desktop\中興\成圖\code\1101-OpenGL\final_01.10\Project2\Debug\Project2.exe

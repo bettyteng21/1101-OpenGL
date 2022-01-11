@@ -1865,10 +1865,10 @@ using namespace std;
 #define REDISPLAYTIMERID 1
 #define MUSIC_ROTATE 2
 #define GIRL_WAIT_TIME 20 //小女孩轉動間格(秒)
-#define GAME_START_TIME 20 //遊戲時間(秒)
-#define SHIELD_TIME 5 //防護罩秒數
+#define GAME_START_TIME 15 //遊戲時間(秒)
+#define SHIELD_TIME 8 //防護罩秒數
 #define PICK_LEN 20
-#define STAR_TIME 5//吃到星星 增加遊戲時間的秒數
+#define STAR_TIME 8//吃到星星 增加遊戲時間的秒數
 #define BUTTON_NUM 3
 
 // sound
